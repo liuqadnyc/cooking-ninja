@@ -50,6 +50,19 @@
       "method": "https://www.youtube.com/watch?v=-Cllw6XEXB0",
       "cookingTime": "45 minutes",
       "id": "2t33lVG"
+    },
+    {
+      "title": "咖喱飯",
+      "ingredients": [
+        "紅蘿蔔",
+        "馬鈴薯",
+        "脥心肉",
+        "咖哩塊",
+        "黑巧克力"
+      ],
+      "method": "https://www.youtube.com/watch?v=y15hEVO6lus&t=323s",
+      "cookingTime": "30 minutes",
+      "id": "Xo1XsuZ"
     }
   ]
 }

@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useState, useEffect } from "react"
 
 export const useFetch = (url, method = "GET") => {
@@ -8,11 +9,7 @@ export const useFetch = (url, method = "GET") => {
 
   const postData = (postData) => {
     setOptions({
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(postData)
+      data: postData
     })
   }
 
@@ -21,16 +18,17 @@ export const useFetch = (url, method = "GET") => {
 
     const fetchData = async (fetchOptions) => {
       setIsPending(true)
-      
+
       try {
-        const res = await fetch(url, { ...fetchOptions, signal: controller.signal })
-        if(!res.ok) {
-          throw new Error(res.statusText)
-        }
-        const data = await res.json()
+        const res = await axios({
+          method,
+          url,
+          ...fetchOptions,
+        })
+        console.log(res, 'res')
 
         setIsPending(false)
-        setData(data)
+        setData(res.data)
         setError(null)
       } catch (err) {
         if (err.name === "AbortError") {

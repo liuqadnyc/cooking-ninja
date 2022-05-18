@@ -4,7 +4,7 @@ import { useFetch } from '../../hooks/useFetch'
 // styles
 import './Create.css'
 
-export default function Create() {  
+export default function Create() {
   const [title, setTitle] = useState('')
   const [method, setMethod] = useState('')
   const [cookingTime, setCookingTime] = useState('')
@@ -13,7 +13,9 @@ export default function Create() {
   const ingredientInput = useRef(null)
 
   const { postData, data, error } = useFetch('http://localhost:3000/recipes', 'POST')
-  
+
+  console.log(data, error, 'fetch result')
+
   const handleSubmit = (e) => {
     e.preventDefault()
     postData({ title, ingredients, method, cookingTime: cookingTime + ' minutes' })
@@ -38,8 +40,8 @@ export default function Create() {
 
         <label>
           <span>Recipe title:</span>
-          <input 
-            type="text" 
+          <input
+            type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
             required
@@ -49,8 +51,8 @@ export default function Create() {
         <label>
           <span>Recipe Ingredients:</span>
           <div className="ingredients">
-            <input 
-              type="text" 
+            <input
+              type="text"
               onChange={(e) => setNewIngredient(e.target.value)}
               value={newIngredient}
               ref={ingredientInput}
@@ -62,7 +64,7 @@ export default function Create() {
 
         <label>
           <span>Recipe Method:</span>
-          <textarea 
+          <textarea
             onChange={(e) => setMethod(e.target.value)}
             value={method}
             required
@@ -71,11 +73,11 @@ export default function Create() {
 
         <label>
           <span>Cooking time (minutes):</span>
-          <input 
-            type="number" 
+          <input
+            type="number"
             onChange={(e) => setCookingTime(e.target.value)}
             value={cookingTime}
-            required 
+            required
           />
         </label>
 
