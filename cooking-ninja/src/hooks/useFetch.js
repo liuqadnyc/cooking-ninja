@@ -25,7 +25,6 @@ export const useFetch = (url, method = "GET") => {
           url,
           ...fetchOptions,
         })
-        console.log(res, 'res')
 
         setIsPending(false)
         setData(res.data)
