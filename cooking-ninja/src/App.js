@@ -8,13 +8,24 @@ import Search from './pages/search/Search'
 import Recipe from './pages/recipe/Recipe'
 
 // styles
-import './App.css'
+import { ThemeSelector } from './components/ThemeSelector'
+import { useEnhancedContext } from './hooks/useEnhancedContext'
+import { ThemeContext } from './context/ThemeContext'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  min-height: 100%;
+  background: ${({ theme }) => (theme === 'dark' ? '#333': 'unset')};
+`
 
 function App() {
+  const { mode } = useEnhancedContext(ThemeContext)
+
   return (
-    <div className="App">
+    <Container theme={mode}>
       <BrowserRouter>
       <Navbar />
+      <ThemeSelector />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -30,7 +41,7 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
-    </div>
+    </Container>
   );
 }
 
